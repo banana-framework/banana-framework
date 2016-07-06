@@ -1,0 +1,6 @@
+[settings]
+line_length=79
+multi_line_output=3
+known_third_party=pluggy
+known_first_party=banana
+skip_glob=.tox,.cache,*.egg-info
