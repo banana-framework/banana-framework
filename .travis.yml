@@ -1,0 +1,27 @@
+sudo: false
+language: python
+python:
+  - 2.7
+  - 3.3
+  - 3.4
+  - 3.5
+  - 3.5-dev
+  - 3.6-dev
+  - nightly
+  - pypy
+
+matrix:
+  # In case of py2.7 run full checks including pep8 and isort
+  exclude:
+    - python: 2.7
+  include:
+    - python: 2.7
+      env: EXTRA_ENVS=,pep8,isort
+
+install:
+  - pip install tox
+  - pip install codecov
+script:
+  - tox -e py$EXTRA_ENVS
+after_success:
+  - codecov
