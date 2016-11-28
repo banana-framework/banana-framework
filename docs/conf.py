@@ -153,7 +153,15 @@ html_theme = 'alabaster'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+html_theme_options = {
+    'description': 'Banana is lightweigth extendable python framework for '
+    'micro services. Here\'s no restrictions in protocols, ORM\'s etc',
+    'github_user': 'banana-framework',
+    'github_repo': 'banana-framework',
+    'github_banner': 'true',
+    'travis_button': 'true',
+    'codecov_button': 'true',
+}
 
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
@@ -202,7 +210,15 @@ html_static_path = ['_static']
 
 # Custom sidebar templates, maps document names to template names.
 #
-# html_sidebars = {}
+html_sidebars = {
+    '**': [
+        'about.html',
+        'navigation.html',
+        'relations.html',
+        'searchbox.html',
+        'donate.html',
+    ]
+}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
