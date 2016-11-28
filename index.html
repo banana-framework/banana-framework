@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Welcome to Banana Framework’s documentation! &#8212; Banana Framework 0.0.1a0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1a0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Banana Framework 0.0.1a0 documentation" href="#" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-banana-framework-s-documentation">
+<h1>Welcome to Banana Framework&#8217;s documentation!<a class="headerlink" href="#welcome-to-banana-framework-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+<div class="section" id="module-banana.utils.version">
+<span id="auto-docs"></span><h1>Auto docs<a class="headerlink" href="#module-banana.utils.version" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="banana.utils.version.VersionInfo">
+<em class="property">class </em><code class="descclassname">banana.utils.version.</code><code class="descname">VersionInfo</code><a class="reference internal" href="_modules/banana/utils/version.html#VersionInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banana.utils.version.VersionInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Version Info structure for semantic versions</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>major</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; major index</li>
+<li><strong>minor</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; minor index</li>
+<li><strong>micro</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; micro index</li>
+<li><strong>status</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; status code (<cite>alpha</cite>, <cite>beta</cite>, <cite>rc</cite>, <cite>final</cite>) default is     <cite>final</cite></li>
+<li><strong>build</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; build number</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="banana.utils.version.get_version">
+<code class="descclassname">banana.utils.version.</code><code class="descname">get_version</code><span class="sig-paren">(</span><em>version=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banana/utils/version.html#get_version"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banana.utils.version.get_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns semantic version representation <a class="reference external" href="https://www.python.org/dev/peps/pep-0440/">(PEP-440)</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>version</strong> (<a class="reference internal" href="#banana.utils.version.VersionInfo" title="banana.utils.version.VersionInfo"><code class="xref py py-class docutils literal"><span class="pre">VersionInfo</span></code></a>) &#8211; structured version. By default <code class="xref py py-const docutils literal"><span class="pre">banana.VERSION</span></code></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">semantic version representation</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)">str</a></td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Examples:</dt>
+<dd><div class="first highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">banana.utils.version</span> <span class="k">import</span> <span class="n">VersionInfo</span><span class="p">,</span> <span class="n">get_version</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">version</span> <span class="o">=</span> <span class="n">VersionInfo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;beta&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_version</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+<span class="go">&#39;0.1.2b10&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">banana.utils.version</span> <span class="k">import</span> <span class="n">VersionInfo</span><span class="p">,</span> <span class="n">get_version</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">version</span> <span class="o">=</span> <span class="n">VersionInfo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;final&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_version</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+<span class="go">&#39;0.1.2&#39;</span>
+</pre></div>
+</div>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">banana</span> <span class="k">import</span> <span class="n">VERSION</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">banana.utils.version</span> <span class="k">import</span> <span class="n">VersionInfo</span><span class="p">,</span> <span class="n">get_version</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_version</span><span class="p">()</span> <span class="o">==</span> <span class="n">get_version</span><span class="p">(</span><span class="n">VERSION</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Banana Framework</a></h1>
+
+
+
+<p class="blurb">Banana is lightweigth extendable python framework for micro services. Here's no restrictions in protocols, ORM's etc</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=banana-framework&repo=banana-framework&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a href="https://travis-ci.org/banana-framework/banana-framework">
+    <img
+        alt="https://secure.travis-ci.org/banana-framework/banana-framework.svg?branch=master"
+        src="https://secure.travis-ci.org/banana-framework/banana-framework.svg?branch=master"
+    />
+</a>
+</p>
+
+
+
+
+    
+
+<p>
+<a href="https://codecov.io/github/banana-framework/banana-framework">
+    <img
+    alt="https://codecov.io/github/banana-framework/banana-framework/coverage.svg?branch=master"
+    src="https://codecov.io/github/banana-framework/banana-framework/coverage.svg?branch=master"
+    />
+</a>
+</p>
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016 - 2016, Banana Framework Foundation.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/index.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/banana-framework/banana-framework" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

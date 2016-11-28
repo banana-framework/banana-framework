@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>banana.utils.version &#8212; Banana Framework 0.0.1a0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.0.1a0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="top" title="Banana Framework 0.0.1a0 documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for banana.utils.version</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- encoding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
+
+<span class="n">_VersionInfoBase</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s1">&#39;VersionInfo&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="s1">&#39;micro&#39;</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="p">,</span> <span class="s1">&#39;build&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="VersionInfo"><a class="viewcode-back" href="../../../index.html#banana.utils.version.VersionInfo">[docs]</a><span class="k">class</span> <span class="nc">VersionInfo</span><span class="p">(</span><span class="n">_VersionInfoBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Version Info structure for semantic versions</span>
+
+<span class="sd">    :param major: major index</span>
+<span class="sd">    :type major: int</span>
+<span class="sd">    :param minor: minor index</span>
+<span class="sd">    :type minor: int</span>
+<span class="sd">    :param micro: micro index</span>
+<span class="sd">    :type micro: int</span>
+<span class="sd">    :param status: status code (`alpha`, `beta`, `rc`, `final`) default is \</span>
+<span class="sd">    `final`</span>
+<span class="sd">    :type status: str</span>
+<span class="sd">    :param build: build number</span>
+<span class="sd">    :type build: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">()</span></div>
+
+
+<span class="n">STATUS_MAPPING</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;beta&#39;</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rc&#39;</span><span class="p">:</span> <span class="s1">&#39;rc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;final&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="get_version"><a class="viewcode-back" href="../../../index.html#banana.utils.version.get_version">[docs]</a><span class="k">def</span> <span class="nf">get_version</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns semantic version representation `(PEP-440)</span>
+<span class="sd">    &lt;https://www.python.org/dev/peps/pep-0440/&gt;`_</span>
+
+<span class="sd">    :param version: structured version. By default :py:const:`banana.VERSION`</span>
+<span class="sd">    :type version: :py:class:`VersionInfo`</span>
+<span class="sd">    :return: semantic version representation</span>
+<span class="sd">    :rtype: str</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from banana.utils.version import VersionInfo, get_version</span>
+<span class="sd">        &gt;&gt;&gt; version = VersionInfo(0, 1, 2, &#39;beta&#39;, 10)</span>
+<span class="sd">        &gt;&gt;&gt; get_version(version)</span>
+<span class="sd">        &#39;0.1.2b10&#39;</span>
+
+<span class="sd">        &gt;&gt;&gt; from banana.utils.version import VersionInfo, get_version</span>
+<span class="sd">        &gt;&gt;&gt; version = VersionInfo(0, 1, 2, &#39;final&#39;, 10)</span>
+<span class="sd">        &gt;&gt;&gt; get_version(version)</span>
+<span class="sd">        &#39;0.1.2&#39;</span>
+
+<span class="sd">        &gt;&gt;&gt; from banana import VERSION</span>
+<span class="sd">        &gt;&gt;&gt; from banana.utils.version import VersionInfo, get_version</span>
+<span class="sd">        &gt;&gt;&gt; get_version() == get_version(VERSION)</span>
+<span class="sd">        True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">version</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">banana</span> <span class="k">import</span> <span class="n">VERSION</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="n">VERSION</span>
+    <span class="n">main_version</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0.major}</span><span class="s1">.</span><span class="si">{0.minor}</span><span class="s1">.</span><span class="si">{0.micro}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+    <span class="n">postfix</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">STATUS_MAPPING</span><span class="p">[</span><span class="n">version</span><span class="o">.</span><span class="n">status</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">status</span><span class="p">:</span>
+        <span class="n">postfix</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}{1.build}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">main_version</span> <span class="o">+</span> <span class="n">postfix</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Banana Framework</a></h1>
+
+
+
+<p class="blurb">Banana is lightweigth extendable python framework for micro services. Here's no restrictions in protocols, ORM's etc</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=banana-framework&repo=banana-framework&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a href="https://travis-ci.org/banana-framework/banana-framework">
+    <img
+        alt="https://secure.travis-ci.org/banana-framework/banana-framework.svg?branch=master"
+        src="https://secure.travis-ci.org/banana-framework/banana-framework.svg?branch=master"
+    />
+</a>
+</p>
+
+
+
+
+    
+
+<p>
+<a href="https://codecov.io/github/banana-framework/banana-framework">
+    <img
+    alt="https://codecov.io/github/banana-framework/banana-framework/coverage.svg?branch=master"
+    src="https://codecov.io/github/banana-framework/banana-framework/coverage.svg?branch=master"
+    />
+</a>
+</p>
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016 - 2016, Banana Framework Foundation.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/banana-framework/banana-framework" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
