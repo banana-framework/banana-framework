@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -7,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Index &#8212; Banana Framework 0.0.1a0 documentation</title>
+    <title>Making your plugin installable by others &#8212; Banana Framework 0.0.1a0 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,9 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="index" title="Index" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="Banana Framework 0.0.1a0 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to Banana Framework’s documentation!" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -42,45 +42,39 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
+  <div class="section" id="making-your-plugin-installable-by-others">
+<span id="pip-installable-plugins"></span><span id="setuptools-entry-points"></span><span id="writing-plugins"></span><span id="plugins"></span><h1>Making your plugin installable by others<a class="headerlink" href="#making-your-plugin-installable-by-others" title="Permalink to this headline">¶</a></h1>
+<p>To make your plugin, you have to define an entry point for your distribution.
+<code class="docutils literal"><span class="pre">Banana</span></code> uses standard <a class="reference external" href="https://github.com/pytest-dev/pluggy">(pluggy)</a>
+features for this purposes.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># sample ./setup.py file</span>
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
 
-<h1 id="index">Index</h1>
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;myproject&quot;</span><span class="p">,</span>
+    <span class="n">packages</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;myproject&#39;</span><span class="p">]</span>
 
-<div class="genindex-jumpbox">
- <a href="#B"><strong>B</strong></a>
- | <a href="#G"><strong>G</strong></a>
- | <a href="#V"><strong>V</strong></a>
- 
+    <span class="c1"># the following makes a plugin available to banana</span>
+    <span class="n">entry_points</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;banana&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;name_of_plugin = myproject.pluginmodule&#39;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+
+    <span class="c1"># custom PyPI classifier for banana plugins</span>
+    <span class="n">classifiers</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;Framework :: Banana&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
 </div>
-<h2 id="B">B</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="index.html#module-banana.utils.version">banana.utils.version (module)</a>
-  </dt>
-
-  </dl></td>
-</tr></table>
-
-<h2 id="G">G</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="index.html#banana.utils.version.get_version">get_version() (in module banana.utils.version)</a>
-  </dt>
-
-  </dl></td>
-</tr></table>
-
-<h2 id="V">V</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="index.html#banana.utils.version.VersionInfo">VersionInfo (class in banana.utils.version)</a>
-  </dt>
-
-  </dl></td>
-</tr></table>
-
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Make sure to include <code class="docutils literal"><span class="pre">Framework</span> <span class="pre">::</span> <span class="pre">Banana</span></code> in your list of
+<a class="reference external" href="https://python-packaging-user-guide.readthedocs.io/en/latest/distributing/#classifiers">PyPI classifiers</a>
+to make it easy for users to find your plugin.</p>
+</div>
+</div>
 
 
           </div>
@@ -131,14 +125,15 @@
 </a>
 </p>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="writing_plugins.html">Making your plugin installable by others</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Making your plugin installable by others</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Banana Framework&#8217;s documentation!</a></li>
   </ul></li>
 </ul>
 </div>
@@ -163,6 +158,9 @@
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.9</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
+      |
+      <a href="_sources/writing_plugins.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     
