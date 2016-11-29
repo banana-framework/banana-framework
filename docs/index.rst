@@ -11,6 +11,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   writing_plugins
+
 
 
 Indices and tables
