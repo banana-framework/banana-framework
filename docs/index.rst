@@ -28,3 +28,8 @@ Auto docs
 
 .. automodule:: banana.utils.version
    :members:
+
+.. automodule:: banana.utils.functional
+   :members:
+
+

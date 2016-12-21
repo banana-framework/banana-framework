@@ -8,14 +8,18 @@ import banana
 
 version = banana.__version__
 
+with open('README.rst') as fd:
+    long_description = fd.read()
+
 entry_points = {
     'console_scripts': [
-        'banana = banana.commands.manage:execute_from_command_line',
+        'banana = banana.management.main:execute_from_command_line',
     ],
 }
 
 install_requires = [
     'pluggy>=0.1.0,<1.0',
+    'click>=6.0',
 ]
 test_extras = [
     'pytest',
@@ -25,11 +29,14 @@ test_extras = [
 setup(
     name='Banana',
     version=version,
-    url='https://github.com/banana-framework/banana-framework',
+    url='https://banana-framework.github.io/banana-framework/',
     author='Sergey Tsaplin',
     author_email='me@sergeytsaplin.com',
-    description=('A high-level Python framework for microservices '
+    maintainer='Sergey Tsaplin',
+    maintainer_email='me@sergeytsaplin.com',
+    description=('A high-level Python framework for micro services '
                  'development'),
+    long_description=long_description,
     license='BSD',
     extras_require={
         'tests': test_extras,
@@ -44,7 +51,7 @@ setup(
         'Environment :: Console',
         'Framework :: banana',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',
+        'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
@@ -55,6 +62,8 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],

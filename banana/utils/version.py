@@ -25,6 +25,27 @@ class VersionInfo(_VersionInfoBase):
     """
     __slots__ = ()
 
+    @property
+    def semantic_version(self):
+        """Returns semantic version representation `(PEP-440)
+        <https://www.python.org/dev/peps/pep-0440/>`_
+
+        :return: semantic version representation
+        :rtype: str
+
+        Examples:
+            >>> from banana.utils.version import VersionInfo
+            >>> version = VersionInfo(0, 1, 2, 'beta', 10)
+            >>> version.semantic_version
+            '0.1.2b10'
+
+            >>> from banana.utils.version import VersionInfo
+            >>> version = VersionInfo(0, 1, 2, 'final', 10)
+            >>> version.semantic_version
+            '0.1.2'
+        """
+        return semantic_version(self)
+
 
 STATUS_MAPPING = {
     'alpha': 'a',
@@ -34,7 +55,7 @@ STATUS_MAPPING = {
 }
 
 
-def get_version(version=None):
+def semantic_version(version=None):
     """Returns semantic version representation `(PEP-440)
     <https://www.python.org/dev/peps/pep-0440/>`_
 
@@ -44,19 +65,19 @@ def get_version(version=None):
     :rtype: str
 
     Examples:
-        >>> from banana.utils.version import VersionInfo, get_version
+        >>> from banana.utils.version import VersionInfo, semantic_version
         >>> version = VersionInfo(0, 1, 2, 'beta', 10)
-        >>> get_version(version)
+        >>> semantic_version(version)
         '0.1.2b10'
 
-        >>> from banana.utils.version import VersionInfo, get_version
+        >>> from banana.utils.version import VersionInfo, semantic_version
         >>> version = VersionInfo(0, 1, 2, 'final', 10)
-        >>> get_version(version)
+        >>> semantic_version(version)
         '0.1.2'
 
         >>> from banana import VERSION
-        >>> from banana.utils.version import VersionInfo, get_version
-        >>> get_version() == get_version(VERSION)
+        >>> from banana.utils.version import VersionInfo, semantic_version
+        >>> semantic_version() == semantic_version(VERSION)
         True
     """
     if version is None:

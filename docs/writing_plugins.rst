@@ -37,5 +37,5 @@ features for this purposes.
 .. note::
 
     Make sure to include ``Framework :: Banana`` in your list of
-    `PyPI classifiers <https://python-packaging-user-guide.readthedocs.io/en/latest/distributing/#classifiers>`_
+    `PyPI classifiers <http://python-packaging.readthedocs.io/en/latest/metadata.html#better-package-metadata>`_
     to make it easy for users to find your plugin.
